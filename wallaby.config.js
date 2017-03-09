@@ -11,7 +11,10 @@ module.exports = wallaby => ({
 
   env: {
     type: 'node',
-    runner: 'node'
+    runner: 'node',
+    params: {
+      env: 'NODE_ENV=testing'
+    }
   },
 
   testFramework: 'ava',

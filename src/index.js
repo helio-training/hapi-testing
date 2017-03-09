@@ -1,17 +1,26 @@
 import { Server } from 'hapi';
+import HelloPlugin from './plugins/hello';
 
 const server = new Server();
 
+const env = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 4000;
 
 server.connection({
-  port, router: {
+  port,
+  router: {
     isCaseSensitive: false
   },
   routes: {
     cors: true
   }
 });
+
+
+
+
+
+
 
 server.register([
   require('inert'),
@@ -53,8 +62,13 @@ server.register([
         description: 'An example api'
       }
     }
-  }
+  },
+  HelloPlugin
 ], err => {
+
+
+
+
   if (err) throw err;
 
   if (env !== 'testing') {
